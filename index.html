@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BENCHMARK — Review Clips</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a1a;
+            color: #e0e0e0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* === TOP BAR === */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 20px;
+            background: #12122a;
+            border-bottom: 1px solid #2a2a4a;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+        .top-bar .title {
+            font-size: 0.9em;
+            color: #9b59b6;
+            font-weight: 600;
+        }
+        .top-bar .counter {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #fff;
+        }
+        .top-bar .counter .current { color: #9b59b6; font-size: 1.3em; }
+        .top-bar .export-btn {
+            background: #9b59b6;
+            color: #fff;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        .top-bar .export-btn:hover { background: #8e44ad; }
+
+        /* === PROGRESS BAR === */
+        .progress-bar {
+            height: 4px;
+            background: #1a1a3a;
+            flex-shrink: 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #9b59b6, #3498db);
+            transition: width 0.3s ease;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* === MINIMAP === */
+        .minimap {
+            display: flex;
+            justify-content: center;
+            gap: 3px;
+            padding: 6px 20px 0;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+        }
+        .minimap .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+            transition: all 0.15s;
+            border: 2px solid transparent;
+        }
+        .minimap .dot:hover { transform: scale(1.3); }
+        .minimap .dot.current { border-color: #fff; transform: scale(1.3); }
+        .minimap .dot.fb-top       { background: #f1c40f; }
+        .minimap .dot.fb-good      { background: #2ecc71; }
+        .minimap .dot.fb-not_interesting { background: #95a5a6; }
+        .minimap .dot.fb-bad_framing     { background: #f39c12; }
+        .minimap .dot.fb-bad_audio       { background: #e74c3c; }
+        .minimap .dot.fb-duplicate       { background: #3498db; }
+        .minimap .dot.fb-not_relevant     { background: #c0392b; }
+        .minimap .dot.fb-off_topic       { background: #9b59b6; }
+
+        /* === MAIN AREA === */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            position: relative;
+            min-height: 0;
+        }
+
+        /* === VIDEO WRAPPER (main + chat side by side) === */
+        .video-wrapper {
+            flex: 1;
+            width: 100%;
+            max-width: 1400px;
+            display: flex;
+            gap: 8px;
+            align-items: stretch;
+            min-height: 0;
+        }
+
+        /* === MAIN VIDEO PANEL === */
+        .main-video-panel {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+        }
+        .main-video-panel video,
+        .main-video-panel iframe {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 12px;
+            background: #000;
+        }
+        .main-video-panel iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+
+        /* === IFRAME FALLBACK (Bug 3) === */
+        .iframe-fallback {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            background: #111128;
+            border: 2px dashed #333;
+            border-radius: 12px;
+            width: 100%;
+            aspect-ratio: 16/9;
+            text-align: center;
+            padding: 20px;
+        }
+        .iframe-fallback.show { display: flex; }
+        .iframe-fallback p { color: #888; font-size: 0.95em; }
+        .iframe-fallback a {
+            color: #9b59b6;
+            text-decoration: underline;
+            font-size: 1em;
+        }
+        .iframe-fallback .skip-btn {
+            background: #2a2a4a;
+            color: #ccc;
+            border: 1px solid #444;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+        .iframe-fallback .skip-btn:hover { border-color: #9b59b6; color: #fff; }
+
+        /* === CHAT VIDEO PANEL === */
+        .chat-video-panel {
+            width: 260px;
+            flex-shrink: 0;
+            display: flex;       /* visible par defaut */
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .chat-video-panel.hidden { display: none; }
+        .chat-video-panel.no-chat { display: none; }  /* pas de chat dispo */
+        .chat-video-panel .chat-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 0.75em;
+            color: #9b59b6;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .chat-video-panel .dl-chat-btn {
+            font-size: 0.85em;
+            background: #1a1a3a;
+            border: 1px solid #333;
+            color: #ccc;
+            padding: 3px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: 500;
+            transition: all 0.15s;
+        }
+        .chat-video-panel .dl-chat-btn:hover { border-color: #9b59b6; color: #9b59b6; }
+        .chat-video-panel video,
+        .chat-video-panel iframe {
+            width: 100%;
+            border-radius: 10px;
+            background: #000;
+            flex: 1;
+            max-height: 100%;
+            border: none;
+        }
+        #chatPlayer {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        /* === CLIP INFO OVERLAY === */
+        .clip-info-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            backdrop-filter: blur(10px);
+            pointer-events: none;
+        }
+        .clip-info-overlay .timestamp { color: #3498db; font-family: monospace; font-size: 1.1em; }
+        .clip-info-overlay .score { color: #2ecc71; font-weight: bold; margin-left: 10px; }
+        .clip-info-overlay .category {
+            background: #f1c40f22; color: #f1c40f; padding: 2px 8px;
+            border-radius: 4px; font-size: 0.85em; margin-left: 8px;
+        }
+        .clip-info-overlay .sources { color: #e67e22; font-size: 0.85em; margin-top: 4px; }
+        .clip-info-overlay .text { color: #aaa; font-style: italic; font-size: 0.85em; margin-top: 2px; max-width: 400px; }
+
+        /* Feedback badge */
+        .current-feedback {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9em;
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+        .current-feedback.show { display: block; }
+        .current-feedback.fb-top          { background: rgba(241,196,15,0.3);  color: #f1c40f; border: 1px solid #f1c40f; }
+        .current-feedback.fb-good         { background: rgba(46,204,113,0.3);  color: #2ecc71; border: 1px solid #2ecc71; }
+        .current-feedback.fb-not_interesting { background: rgba(149,165,166,0.3); color: #95a5a6; border: 1px solid #95a5a6; }
+        .current-feedback.fb-bad_framing  { background: rgba(243,156,18,0.3);  color: #f39c12; border: 1px solid #f39c12; }
+        .current-feedback.fb-bad_audio    { background: rgba(231,76,60,0.3);   color: #e74c3c; border: 1px solid #e74c3c; }
+        .current-feedback.fb-not_relevant { background: rgba(192,57,43,0.3);   color: #c0392b; border: 1px solid #c0392b; }
+        .current-feedback.fb-duplicate    { background: rgba(52,152,219,0.3);  color: #3498db; border: 1px solid #3498db; }
+        .current-feedback.fb-off_topic    { background: rgba(155,89,182,0.3);  color: #9b59b6; border: 1px solid #9b59b6; }
+
+        /* === BOTTOM PANEL === */
+        .bottom-panel {
+            flex-shrink: 0;
+            padding: 10px 20px 12px;
+            background: #12122a;
+            border-top: 1px solid #2a2a4a;
+        }
+
+        .feedback-row {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+        /* Boutons principaux (row 1) */
+        .fb-btn {
+            flex: 1;
+            min-width: 90px;
+            max-width: 160px;
+            padding: 10px 8px;
+            border: 2px solid #333;
+            background: #1a1a3a;
+            color: #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.88em;
+            font-weight: 600;
+            transition: all 0.15s;
+            text-align: center;
+            line-height: 1.3;
+        }
+        .fb-btn .shortcut {
+            display: block;
+            font-size: 0.65em;
+            color: #666;
+            margin-top: 2px;
+            font-weight: normal;
+        }
+        .fb-btn:hover { transform: translateY(-2px); }
+
+        .fb-btn.fb-top:hover,             .fb-btn.fb-top.active             { background: #f1c40f; color: #000; border-color: #f1c40f; }
+        .fb-btn.fb-good:hover,            .fb-btn.fb-good.active            { background: #2ecc71; color: #fff; border-color: #2ecc71; }
+        .fb-btn.fb-not_interesting:hover, .fb-btn.fb-not_interesting.active { background: #95a5a6; color: #fff; border-color: #95a5a6; }
+        .fb-btn.fb-bad_framing:hover,     .fb-btn.fb-bad_framing.active     { background: #f39c12; color: #fff; border-color: #f39c12; }
+        .fb-btn.fb-bad_audio:hover,       .fb-btn.fb-bad_audio.active       { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+        .fb-btn.fb-not_relevant:hover,    .fb-btn.fb-not_relevant.active    { background: #c0392b; color: #fff; border-color: #c0392b; }
+        .fb-btn.fb-duplicate:hover,       .fb-btn.fb-duplicate.active       { background: #3498db; color: #fff; border-color: #3498db; }
+        .fb-btn.fb-off_topic:hover,       .fb-btn.fb-off_topic.active       { background: #9b59b6; color: #fff; border-color: #9b59b6; }
+
+
+        /* Options row */
+        .options-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .chat-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 7px 14px;
+            border-radius: 8px;
+            background: #1a1a3a;
+            border: 1px solid #333;
+            transition: all 0.15s;
+            font-size: 0.85em;
+        }
+        .chat-toggle:hover { border-color: #9b59b6; }
+        .chat-toggle.active { background: #9b59b6; border-color: #9b59b6; color: #fff; }
+        .chat-toggle.disabled { opacity: 0.3; cursor: not-allowed; }
+        .chat-toggle .shortcut { font-size: 0.7em; color: #666; margin-left: 4px; }
+        .chat-toggle.active .shortcut { color: #ddd; }
+
+        .dl-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            border-radius: 8px;
+            background: #1a1a3a;
+            border: 1px solid #333;
+            color: #ccc;
+            cursor: pointer;
+            font-size: 0.85em;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+        .dl-btn:hover { border-color: #2ecc71; color: #2ecc71; }
+        .dl-btn .shortcut { font-size: 0.7em; color: #666; }
+        .dl-btn.disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; }
+
+        .nav-btn {
+            background: #1a1a3a;
+            border: 1px solid #333;
+            color: #ccc;
+            padding: 7px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.15s;
+        }
+        .nav-btn:hover { border-color: #9b59b6; color: #fff; }
+        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .nav-btn .shortcut { font-size: 0.7em; color: #666; }
+
+        /* === STATS BAR === */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 6px;
+            font-size: 0.75em;
+            color: #666;
+            flex-wrap: wrap;
+        }
+        .stats-bar .stat { display: flex; align-items: center; gap: 4px; }
+        .stats-bar .sdot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .stats-bar .sdot-top          { background: #f1c40f; }
+        .stats-bar .sdot-good         { background: #2ecc71; }
+        .stats-bar .sdot-not_interesting { background: #95a5a6; }
+        .stats-bar .sdot-bad_framing  { background: #f39c12; }
+        .stats-bar .sdot-bad_audio    { background: #e74c3c; }
+        .stats-bar .sdot-not_relevant { background: #c0392b; }
+        .stats-bar .sdot-duplicate    { background: #3498db; }
+        .stats-bar .sdot-off_topic    { background: #9b59b6; }
+        .stats-bar .sdot-pending      { background: #555; }
+
+        /* === DONE SCREEN === */
+        .done-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+        }
+        .done-screen.show { display: flex; }
+        .done-screen h2 { font-size: 2em; color: #2ecc71; margin-bottom: 10px; }
+        .done-screen .done-stats { font-size: 1.1em; color: #aaa; margin-bottom: 30px; line-height: 1.8; }
+        .done-screen .done-btn {
+            background: #9b59b6;
+            color: #fff;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .done-screen .done-btn:hover { background: #8e44ad; }
+
+        /* === MESSAGE SCREEN (no clips) === */
+        .message-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+        }
+        .message-screen.show { display: flex; }
+        .message-screen h2 { font-size: 1.5em; color: #9b59b6; margin-bottom: 10px; }
+        .message-screen p { color: #888; font-size: 1.1em; max-width: 500px; }
+
+        /* Animations */
+        .swipe-left { animation: swipeLeft 0.25s ease-out; }
+        .swipe-right { animation: swipeRight 0.25s ease-out; }
+        @keyframes swipeLeft {
+            0% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(-60px); }
+        }
+        @keyframes swipeRight {
+            0% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(60px); }
+        }
+        .fade-in { animation: fadeIn 0.2s ease-in; }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="title" id="pageTitle" style="color:#e74c3c">BENCHMARK — ...</div>
+        <div class="counter"><span class="current" id="currentNum">0</span> / <span id="totalNum">0</span></div>
+        <select id="streamerFilter" onchange="filterByStreamer()" style="background:#1a1a3a;color:#ccc;border:1px solid #333;border-radius:6px;padding:4px 10px;font-size:0.85em;cursor:pointer;">
+            <option value="">Tous les streamers</option>
+        </select>
+        <button class="export-btn" onclick="exportFeedback()">Exporter feedback</button>
+        <span id="driveUploadStatus" style="font-size:0.75em;color:#555;margin-left:8px"></span>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+    </div>
+
+    <!-- Sprint 32 : CONTEXT SUMMARY — Sprint 35 : fermable (une seule fois) -->
+    <div id="contextSummary" style="display:none;padding:8px 20px;background:#1a1a35;border-bottom:1px solid #2a2a4a;font-size:0.82em;color:#ccc;flex-shrink:0;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span style="color:#9b59b6;font-weight:700;margin-right:8px;">&#129302; R&#233;sum&#233; IA</span><span id="contextSummaryContent"></span>
+        <button onclick="dismissContextSummary()" title="Fermer" style="margin-left:auto;background:none;border:none;color:#666;cursor:pointer;font-size:1.1em;padding:0 4px;line-height:1;" aria-label="Fermer">&#10005;</button>
+    </div>
+
+    <!-- MINIMAP -->
+    <div class="minimap" id="minimap"></div>
+
+    <!-- MAIN -->
+    <div class="main" id="mainArea">
+        <!-- VIDEO WRAPPER: main video + chat panel side by side -->
+        <div class="video-wrapper" id="videoWrapper">
+
+            <!-- Main video panel -->
+            <div class="main-video-panel" id="mainVideoPanel">
+                <video id="player" controls autoplay></video>
+
+                <!-- Sprint 34 : fallback ameliore — lien Drive + download + skip -->
+                <div class="iframe-fallback" id="iframeFallback">
+                    <p>&#9888; Preview lente — le clip est peut-etre en cours de traitement par Drive</p>
+                    <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;justify-content:center">
+                        <a id="fallbackDriveLink" href="#" target="_blank" style="padding:8px 16px;background:#4285f4;color:#fff;border-radius:6px;text-decoration:none">&#128279; Ouvrir dans Drive</a>
+                        <a id="fallbackDownloadLink" href="#" target="_blank" style="padding:8px 16px;background:#34a853;color:#fff;border-radius:6px;text-decoration:none">&#11015; Telecharger</a>
+                        <button class="skip-btn" onclick="navigate(1)">Passer &#8594;</button>
+                    </div>
+                </div>
+
+                <div class="clip-info-overlay" id="clipInfo"></div>
+                <div class="current-feedback" id="currentFeedback"></div>
+            </div>
+
+            <!-- Chat video panel — visible par defaut si disponible -->
+            <div class="chat-video-panel" id="chatPanel">
+                <div class="chat-label">
+                    <span>&#128172; Chat Twitch</span>
+                    <button class="dl-chat-btn" id="dlChatBtn" onclick="downloadChat()" title="Telecharger la video chat">&#128229; DL</button>
+                </div>
+                <div id="chatPlayer"></div>
+            </div>
+        </div>
+
+        <!-- MESSAGE SCREEN (no clips yet) -->
+        <div class="message-screen" id="messageScreen">
+            <h2 id="messageTitle">Chargement...</h2>
+            <p id="messageText"></p>
+        </div>
+
+        <!-- VEILLE RECAP SCREEN -->
+        <div class="done-screen" id="veilleScreen" style="display:none;">
+            <div style="max-width:600px;width:100%;text-align:left;">
+                <h2 style="text-align:center;margin-bottom:20px;">&#129302; Veille IA</h2>
+                <div id="veilleContent" style="font-size:0.92em;line-height:1.8;"></div>
+                <div style="text-align:center;margin-top:28px;">
+                    <button class="done-btn" onclick="dismissVeille()" style="font-size:1em;padding:12px 32px;">
+                        Commencer la review &#8594; <span style="font-size:0.75em;color:#aaa;margin-left:8px;">Espace / &rarr;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DONE SCREEN -->
+        <div class="done-screen" id="doneScreen">
+            <h2>Review terminee !</h2>
+            <div class="done-stats" id="doneStats"></div>
+            <button class="done-btn" onclick="exportFeedback()">Telecharger le feedback JSON</button>
+        </div>
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="bottom-panel" id="bottomPanel">
+        <!-- 5 boutons de feedback -->
+        <div class="feedback-row">
+            <button class="fb-btn fb-top" onclick="rate('top')">
+                &#128293; Top<span class="shortcut">A</span>
+            </button>
+            <button class="fb-btn fb-good" onclick="rate('good')">
+                &#9989; Bon<span class="shortcut">Z</span>
+            </button>
+            <button class="fb-btn fb-not_interesting" onclick="rate('not_interesting')">
+                &#128564; Moment faible<span class="shortcut">E</span>
+            </button>
+            <button class="fb-btn fb-bad_framing" onclick="showBadFramingSubmenu()">
+                &#9986; Mal cadre<span class="shortcut">R</span>
+            </button>
+            <button class="fb-btn fb-not_relevant" onclick="rate('not_relevant')" style="border-color:#e74c3c33;">
+                &#10060; Pas pertinent<span class="shortcut">S</span>
+            </button>
+            <button class="fb-btn fb-duplicate" onclick="rate('duplicate')">
+                &#128257; Doublon<span class="shortcut">T</span>
+            </button>
+        </div>
+
+        <div class="options-row">
+            <button class="nav-btn" id="btnPrev" onclick="navigate(-1)">
+                &#8592; Precedent <span class="shortcut">&#8592;</span>
+            </button>
+            <a class="dl-btn" id="dlClipBtn" onclick="downloadClip()">
+                &#128229; Telecharger clip <span class="shortcut">D</span>
+            </a>
+            <div class="chat-toggle" id="chatToggle" onclick="toggleChat()">
+                &#128172; Chat <span class="shortcut">C</span>
+            </div>
+            <button class="dl-btn" id="dlFolderBtn" onclick="downloadFolder()" title="T&#233;l&#233;charger tous les clips Top + Bons">
+                &#128230; S&#233;lection <span class="shortcut"></span>
+            </button>
+            <button class="nav-btn" id="btnNext" onclick="navigate(1)">
+                Suivant &#8594; <span class="shortcut">&#8594;</span>
+            </button>
+        </div>
+
+        <div class="stats-bar" id="statsBar">
+            <div class="stat"><span class="sdot sdot-top"></span><span id="statTop">0</span> top</div>
+            <div class="stat"><span class="sdot sdot-good"></span><span id="statGood">0</span> bons</div>
+            <div class="stat"><span class="sdot sdot-not_interesting"></span><span id="statNotInteresting">0</span> faibles</div>
+            <div class="stat"><span class="sdot sdot-bad_framing"></span><span id="statBadFraming">0</span> mal cadres</div>
+            <div class="stat"><span class="sdot sdot-not_relevant"></span><span id="statNotRelevant">0</span> pas pertinents</div>
+            <div class="stat"><span class="sdot sdot-duplicate"></span><span id="statDuplicate">0</span> doublons</div>
+            <div class="stat"><span class="sdot sdot-pending"></span><span id="statPending">0</span> restants</div>
+        </div>
+    </div>
+
+    <script>
+        // === CONFIG ===
+        // URL du Google Apps Script pour l'upload automatique du feedback vers Drive.
+        // Laisser vide ('') pour desactiver l'upload automatique (telechargement local seulement).
+        const APPS_SCRIPT_URL = '';
+
+        // Timeout iframe en ms (Bug 3)
+        const IFRAME_TIMEOUT_MS = 15000;
+
+        // === STATE ===
+        let MANIFEST = null;
+        let CLIPS = [];
+        let TOTAL = 0;
+        let feedback = {};        // { filename: verdict_string }
+        let chatFlags = {};       // { filename: bool }
+        let downloads = {};
+        let currentIndex = 0;
+        let useIframe = false;
+        let iframeTimer = null;   // Bug 3 : timeout handle
+
+        // === LOCALSTORAGE HELPERS (Bug 1) ===
+        function lsKey() {
+            return 'benchmark_' + (MANIFEST ? (MANIFEST.run_id || MANIFEST.date || 'default') : 'default');
+        }
+
+        function saveProgress() {
+            try {
+                localStorage.setItem(lsKey(), JSON.stringify({
+                    currentIndex,
+                    feedback,
+                    chatFlags,
+                }));
+            } catch (e) {
+                console.warn('localStorage save failed:', e);
+            }
+        }
+
+        function restoreProgress() {
+            try {
+                const raw = localStorage.getItem(lsKey());
+                if (!raw) return;
+                const saved = JSON.parse(raw);
+                if (saved.feedback)   feedback   = saved.feedback;
+                if (saved.chatFlags)  chatFlags  = saved.chatFlags;
+                if (typeof saved.currentIndex === 'number' && saved.currentIndex < TOTAL) {
+                    currentIndex = saved.currentIndex;
+                }
+            } catch (e) {
+                console.warn('localStorage restore failed:', e);
+            }
+        }
+
+        // === INIT ===
+        init();
+
+        async function init() {
+            try {
+                const resp = await fetch('manifest.json?' + Date.now());
+                if (!resp.ok) throw new Error('manifest.json introuvable');
+                MANIFEST = await resp.json();
+            } catch (e) {
+                showMessage('Erreur', 'Impossible de charger manifest.json : ' + e.message);
+                return;
+            }
+
+            if (!MANIFEST.clips || MANIFEST.clips.length === 0) {
+                showMessage(
+                    MANIFEST.message || 'Aucun clip disponible',
+                    'Le pipeline n\'a pas encore genere de clips. Lance le script et les clips apparaitront ici.'
+                );
+                return;
+            }
+
+            ALL_CLIPS = MANIFEST.clips;
+            CLIPS = [...ALL_CLIPS];
+            TOTAL = CLIPS.length;
+            useIframe = MANIFEST.use_iframe || false;
+
+            // UI
+            document.getElementById('pageTitle').textContent = 'BENCHMARK ' + (MANIFEST.run_id || MANIFEST.date || '?');
+            document.getElementById('totalNum').textContent = TOTAL;
+            document.getElementById('statPending').textContent = TOTAL;
+
+            buildMinimap();
+            buildStreamerFilter();
+
+            // Sprint 34 : affiche le resume contextuel (bandeau)
+            renderContextSummary();
+
+            // Bug 1 : restaurer la progression sauvegardee
+            restoreProgress();
+
+            // Sprint 34 : page recap veille avant le premier clip
+            if (showVeilleRecap()) return;  // loadClip sera appele par dismissVeille()
+
+            loadClip(currentIndex);
+        }
+
+        function showMessage(title, text) {
+            document.getElementById('videoWrapper').style.display = 'none';
+            document.getElementById('bottomPanel').style.display = 'none';
+            const ms = document.getElementById('messageScreen');
+            ms.classList.add('show');
+            document.getElementById('messageTitle').textContent = title;
+            document.getElementById('messageText').textContent = text;
+        }
+
+        // === CORE ===
+        function loadClip(idx) {
+            if (idx < 0 || idx >= TOTAL) return;
+            currentIndex = idx;
+
+            const clip = CLIPS[idx];
+            const wrapper = document.getElementById('videoWrapper');
+
+            // Ensure video wrapper visible, done hidden
+            wrapper.style.display = 'flex';
+            document.getElementById('doneScreen').classList.remove('show');
+
+            // Animation
+            wrapper.classList.remove('fade-in');
+            void wrapper.offsetWidth;
+            wrapper.classList.add('fade-in');
+
+            // Bug 3 : annuler le timer iframe precedent
+            if (iframeTimer) { clearTimeout(iframeTimer); iframeTimer = null; }
+
+            // S-02 : detacher les anciens listeners de sync avant de charger le nouveau clip
+            const prevPlayer = document.getElementById('player');
+            if (prevPlayer) _detachChatSync(prevPlayer);
+
+            // Cacher le fallback iframe
+            const fallback = document.getElementById('iframeFallback');
+            fallback.classList.remove('show');
+
+            // Sprint 34 : strategie video en 3 niveaux
+            // 1. Twitch clip embed (si clip_url dispo — clips-only mode)
+            // 2. Cloudflare proxy <video> tag (clips VOD — contourne CORP Drive)
+            // 3. Drive iframe /preview (fallback)
+            const playerEl = document.getElementById('player');
+            const clipSlug = extractTwitchClipSlug(clip.clip_url);
+
+            if (clipSlug) {
+                // Mode 1 : Twitch clip embed (clips-only) — toujours fiable
+                const iframe = document.createElement('iframe');
+                iframe.id = 'player';
+                iframe.src = 'https://clips.twitch.tv/embed?clip=' + clipSlug + '&parent=' + window.location.hostname + '&autoplay=true';
+                iframe.allow = 'autoplay';
+                iframe.allowFullscreen = true;
+                iframe.style.cssText = 'width:100%;aspect-ratio:16/9;border:none;border-radius:12px;background:#000;';
+                playerEl.replaceWith(iframe);
+
+            } else if (clip.video_url) {
+                // Mode 2 : Cloudflare proxy — video directe dans <video> tag
+                if (playerEl.tagName !== 'VIDEO') {
+                    const video = document.createElement('video');
+                    video.id = 'player';
+                    video.controls = true;
+                    video.autoplay = true;
+                    video.preload = 'auto';
+                    playerEl.replaceWith(video);
+                }
+                const player = document.getElementById('player');
+                player.style.display = '';
+                player.src = clip.video_url;
+                player.play().catch(() => {});
+
+                // Fallback si le proxy echoue
+                player.onerror = () => {
+                    document.getElementById('fallbackDriveLink').href = clip.drive_view_url || '#';
+                    document.getElementById('fallbackDownloadLink').href = clip.drive_url || '#';
+                    fallback.classList.add('show');
+                    player.style.display = 'none';
+                };
+                // S-05 : pas de onclick custom — les controles natifs <video controls> gerent
+                // le clic correctement. Le conflit onclick vs controls causait "relance au lieu de pause".
+
+            } else {
+                // Mode 3 : Drive iframe /preview (dernier recours)
+                const fileId = extractFileId(clip.drive_view_url || clip.drive_url);
+                if (fileId) {
+                    const iframe = document.createElement('iframe');
+                    iframe.id = 'player';
+                    iframe.src = 'https://drive.google.com/file/d/' + fileId + '/preview';
+                    iframe.allow = 'autoplay';
+                    iframe.style.cssText = 'width:100%;aspect-ratio:16/9;border:none;border-radius:12px;background:#000;';
+
+                    let loaded = false;
+                    iframe.onload = () => {
+                        loaded = true;
+                        if (iframeTimer) { clearTimeout(iframeTimer); iframeTimer = null; }
+                        fallback.classList.remove('show');
+                        iframe.style.display = '';
+                    };
+                    playerEl.replaceWith(iframe);
+
+                    iframeTimer = setTimeout(() => {
+                        if (!loaded) {
+                            document.getElementById('player').style.display = 'none';
+                            document.getElementById('fallbackDriveLink').href = clip.drive_view_url || '#';
+                            document.getElementById('fallbackDownloadLink').href = clip.drive_url || '#';
+                            fallback.classList.add('show');
+                        }
+                    }, IFRAME_TIMEOUT_MS);
+                }
+            }
+
+            // Sprint 35 : chat desactive par defaut (Silixio l'active manuellement si besoin)
+            const chatPanel = document.getElementById('chatPanel');
+            const chatPlayer = document.getElementById('chatPlayer');
+            // chatFlags[filename] reste undefined/false par defaut — pas de forcage a true
+            const chatIsActive = !!(clip.chat_clip_url && chatFlags[clip.filename]);
+            if (chatIsActive) {
+                _setChatIframe(chatPlayer, clip.chat_clip_url, clip.chat_video_url);
+                chatPanel.classList.remove('hidden', 'no-chat');
+            } else if (clip.chat_clip_url) {
+                // Chat dispo mais masque par Silixio
+                _clearChatIframe(chatPlayer);
+                chatPanel.classList.add('hidden');
+                chatPanel.classList.remove('no-chat');
+            } else {
+                // Pas de chat pour ce clip
+                _clearChatIframe(chatPlayer);
+                chatPanel.classList.add('no-chat');
+                chatPanel.classList.remove('hidden');
+            }
+
+            // Sprint 32 : panneau info clip enrichi
+            const categoryFR = {
+                'funny_fail': '\ud83d\ude02 Dr\u00f4le', 'epic_play': '\ud83c\udfae Gameplay \u00e9pique',
+                'hype_cast': '\ud83d\udd25 Hype cast', 'drama_debate': '\ud83d\udcac D\u00e9bat',
+                'victory': '\ud83c\udfc6 Victoire', 'funny_talk': '\ud83d\ude04 Dr\u00f4le (hors jeu)',
+                'trash': '\ud83d\udeab Pas int\u00e9ressant',
+            };
+            const scoreColor = clip.score >= 70 ? '#2ecc71' : clip.score >= 50 ? '#f1c40f' : '#e74c3c';
+            const nSources = (clip.sources || []).length;
+            const hasTwitchClips = (clip.sources || []).includes('twitch_clips');
+            let badge = '';
+            if (hasTwitchClips) badge = '<span style="color:#2ecc71;font-size:0.85em;margin-left:8px;">\ud83d\udfe2 Clipp\u00e9 par les viewers</span>';
+            else if (nSources >= 3) badge = '<span style="color:#2ecc71;font-size:0.85em;margin-left:8px;">\ud83d\udfe2 Confirm\u00e9</span>';
+            else if (nSources <= 1) badge = '<span style="color:#f1c40f;font-size:0.85em;margin-left:8px;">\ud83d\udfe1 Signal faible</span>';
+
+            let infoHtml = '<span class="timestamp">' + escHtml(clip.timestamp || '') + '</span>';
+            infoHtml += '<span class="score" style="color:' + scoreColor + ';">' + Math.round(clip.score || 0) + '</span>';
+            infoHtml += badge;
+            if (clip.ai_category) infoHtml += '<span class="category">' + (categoryFR[clip.ai_category] || escHtml(clip.ai_category)) + '</span>';
+            if (clip.streamer) infoHtml += '<div style="color:#9b59b6;font-size:0.85em;margin-top:2px;">' + escHtml(clip.streamer) + '</div>';
+            if (clip.ai_summary) infoHtml += '<div class="text">' + escHtml(clip.ai_summary) + '</div>';
+            else if (clip.text) infoHtml += '<div class="text">"' + escHtml(clip.text.substring(0, 100)) + '"</div>';
+            document.getElementById('clipInfo').innerHTML = infoHtml;
+
+            // Counter
+            document.getElementById('currentNum').textContent = idx + 1;
+
+            // Progress
+            updateProgress();
+
+            // Nav
+            document.getElementById('btnPrev').disabled = (idx === 0);
+
+            // Feedback badge
+            updateCurrentFeedback(clip.filename);
+
+            // Chat toggle button state
+            const chatToggle = document.getElementById('chatToggle');
+            if (!clip.chat_clip_url) {
+                chatToggle.classList.add('disabled');
+                chatToggle.classList.remove('active');
+            } else {
+                chatToggle.classList.remove('disabled');
+                chatToggle.classList.toggle('active', !!chatFlags[clip.filename]);
+            }
+
+            // Feedback button highlight
+            highlightFeedbackBtn(feedback[clip.filename]);
+
+            updateMinimap();
+            updateStats();
+
+            // Bug 1 : sauvegarder la position
+            saveProgress();
+        }
+
+        function rate(value) {
+            const clip = CLIPS[currentIndex];
+            const prev = feedback[clip.filename];
+
+            if (prev === value) {
+                delete feedback[clip.filename];
+            } else {
+                feedback[clip.filename] = value;
+            }
+
+            updateCurrentFeedback(clip.filename);
+            highlightFeedbackBtn(feedback[clip.filename]);
+            updateMinimap();
+            updateStats();
+
+            // Bug 1 : sauvegarder apres chaque vote
+            saveProgress();
+
+            // Auto-avance apres 400ms
+            if (feedback[clip.filename]) {
+                setTimeout(() => {
+                    if (currentIndex < TOTAL - 1) {
+                        navigate(1);
+                    } else {
+                        showDone();
+                    }
+                }, 400);
+            }
+        }
+
+        function navigate(delta) {
+            const next = currentIndex + delta;
+            if (next >= 0 && next < TOTAL) {
+                const wrapper = document.getElementById('videoWrapper');
+                wrapper.classList.add(delta > 0 ? 'swipe-left' : 'swipe-right');
+                setTimeout(() => {
+                    wrapper.classList.remove('swipe-left', 'swipe-right');
+                    loadClip(next);
+                }, 200);
+            } else if (next >= TOTAL) {
+                showDone();
+            }
+        }
+
+        // === CHAT IFRAME HELPERS ===
+        function _getChatFileId(url) {
+            if (!url) return null;
+            const m = url.match(/[?&]id=([^&]+)/);
+            return m ? m[1] : null;
+        }
+
+        function _setChatIframe(container, chatUrl, chatVideoUrl) {
+            // Sprint 35 : si Cloudflare proxy dispo, utilise <video> directement (pas de transcoding Drive)
+            if (chatVideoUrl) {
+                const existing = container.querySelector('video');
+                if (existing && existing.src === chatVideoUrl) return;
+                container.innerHTML = '';
+                const video = document.createElement('video');
+                video.src = chatVideoUrl;
+                video.controls = true;
+                video.autoplay = true;   // S-02 : demarre automatiquement avec le clip principal
+                video.muted = false;
+                video.style.cssText = 'width:100%;height:100%;border-radius:10px;background:#000;display:block;';
+                container.appendChild(video);
+                // S-02 : sync play/pause/seek avec le player principal
+                _attachChatSync(document.getElementById('player'), video);
+                return;
+            }
+            // Fallback : Drive /preview iframe
+            const fileId = _getChatFileId(chatUrl);
+            if (!fileId) return;
+            const existing = container.querySelector('iframe');
+            const previewSrc = 'https://drive.google.com/file/d/' + fileId + '/preview';
+            if (existing && existing.src === previewSrc) return;
+            container.innerHTML = '';
+            const iframe = document.createElement('iframe');
+            iframe.src = previewSrc;
+            iframe.allow = 'autoplay';
+            iframe.style.cssText = 'width:100%;height:100%;border:none;border-radius:10px;background:#000;display:block;';
+            container.appendChild(iframe);
+        }
+
+        function _clearChatIframe(container) {
+            container.innerHTML = '';
+        }
+
+        function toggleChat() {
+            const clip = CLIPS[currentIndex];
+            if (!clip.chat_clip_url) return;
+
+            chatFlags[clip.filename] = !chatFlags[clip.filename];
+            document.getElementById('chatToggle').classList.toggle('active', chatFlags[clip.filename]);
+
+            const chatPanel = document.getElementById('chatPanel');
+            const chatPlayer = document.getElementById('chatPlayer');
+            if (chatFlags[clip.filename]) {
+                _setChatIframe(chatPlayer, clip.chat_clip_url, clip.chat_video_url);
+                chatPanel.classList.remove('hidden');
+            } else {
+                _clearChatIframe(chatPlayer);
+                chatPanel.classList.add('hidden');
+            }
+
+            saveProgress();
+        }
+
+        function downloadChat() {
+            const clip = CLIPS[currentIndex];
+            if (clip.chat_clip_url) {
+                triggerDownload(clip.chat_clip_url, clip.filename.replace('.mp4', '_chat.mp4'));
+            }
+        }
+
+        function triggerDownload(url, filename) {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename || '';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function downloadClip() {
+            const clip = CLIPS[currentIndex];
+            if (clip.drive_url) {
+                downloads[clip.filename] = true;
+                triggerDownload(clip.drive_url, clip.filename);
+            }
+        }
+
+
+        // === UI UPDATES ===
+        const VERDICT_LABELS = {
+            top:             '&#128293; Top',
+            good:            '&#9989; Bon',
+            not_interesting: '&#128564; Moment faible',
+            bad_framing:     '&#9986; Mal cadr\u00e9',
+            not_relevant:    '&#10060; Pas pertinent',
+            duplicate:       '&#128257; Doublon',
+        };
+
+        function updateCurrentFeedback(filename) {
+            const el = document.getElementById('currentFeedback');
+            const fb = feedback[filename];
+            el.className = 'current-feedback';
+            if (fb) {
+                el.innerHTML = VERDICT_LABELS[fb] || fb;
+                el.classList.add('show', 'fb-' + fb);
+            }
+        }
+
+        function highlightFeedbackBtn(verdict) {
+            document.querySelectorAll('.fb-btn').forEach(btn => btn.classList.remove('active'));
+            if (verdict) {
+                document.querySelector('.fb-btn.fb-' + verdict)?.classList.add('active');
+            }
+        }
+
+        function updateProgress() {
+            const rated = Object.keys(feedback).length;
+            document.getElementById('progressFill').style.width = (rated / TOTAL * 100) + '%';
+        }
+
+        function updateStats() {
+            const vals = Object.values(feedback);
+            const count = v => vals.filter(x => x === v).length;
+            document.getElementById('statTop').textContent          = count('top');
+            document.getElementById('statGood').textContent         = count('good');
+            document.getElementById('statNotInteresting').textContent = count('not_interesting');
+            document.getElementById('statBadFraming').textContent   = count('bad_framing');
+            document.getElementById('statNotRelevant').textContent  = count('not_relevant');
+            document.getElementById('statDuplicate').textContent    = count('duplicate');
+            document.getElementById('statPending').textContent      = TOTAL - vals.length;
+            updateProgress();
+        }
+
+        // === Sprint 32 : FILTRE PAR STREAMER ===
+        let ALL_CLIPS = [];  // copie originale non filtree
+        function buildStreamerFilter() {
+            const streamers = [...new Set(ALL_CLIPS.map(c => c.streamer).filter(Boolean))].sort();
+            const sel = document.getElementById('streamerFilter');
+            streamers.forEach(s => {
+                const n = ALL_CLIPS.filter(c => c.streamer === s).length;
+                const opt = document.createElement('option');
+                opt.value = s;
+                opt.textContent = s + ' (' + n + ')';
+                sel.appendChild(opt);
+            });
+        }
+        function filterByStreamer() {
+            const val = document.getElementById('streamerFilter').value;
+            if (val) {
+                CLIPS = ALL_CLIPS.filter(c => c.streamer === val);
+            } else {
+                CLIPS = [...ALL_CLIPS];
+            }
+            TOTAL = CLIPS.length;
+            currentIndex = 0;
+            feedback = {};  // reset feedback on filter change
+            document.getElementById('totalNum').textContent = TOTAL;
+            buildMinimap();
+            updateStats();
+            loadClip(0);
+        }
+
+        // === Sprint 32 : SOUS-CATEGORIES MAL CADRE ===
+        let pendingBadFraming = false;
+        function showBadFramingSubmenu() {
+            pendingBadFraming = true;
+            const clip = CLIPS[currentIndex];
+            // Mini-menu temporaire
+            const html = '<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);' +
+                'background:#1a1a3a;border:2px solid #f39c12;border-radius:12px;padding:20px;z-index:100;' +
+                'display:flex;flex-direction:column;gap:8px;min-width:250px;" id="badFramingMenu">' +
+                '<div style="color:#f39c12;font-weight:bold;margin-bottom:4px;">Mal cadr\u00e9 — pourquoi ?</div>' +
+                '<button onclick="rateBadFraming(\'too_early\')" style="padding:10px;background:#2a2a4a;color:#ccc;border:1px solid #444;border-radius:8px;cursor:pointer;font-size:0.9em;">&#9199; Trop t\u00f4t <span style="color:#666;font-size:0.8em;">(1)</span></button>' +
+                '<button onclick="rateBadFraming(\'too_late\')" style="padding:10px;background:#2a2a4a;color:#ccc;border:1px solid #444;border-radius:8px;cursor:pointer;font-size:0.9em;">&#9200; Trop tard <span style="color:#666;font-size:0.8em;">(2)</span></button>' +
+                '<button onclick="rateBadFraming(\'too_short\')" style="padding:10px;background:#2a2a4a;color:#ccc;border:1px solid #444;border-radius:8px;cursor:pointer;font-size:0.9em;">&#9986; Trop court <span style="color:#666;font-size:0.8em;">(3)</span></button>' +
+                '<button onclick="rateBadFraming(\'too_long\')" style="padding:10px;background:#2a2a4a;color:#ccc;border:1px solid #444;border-radius:8px;cursor:pointer;font-size:0.9em;">&#128340; Trop long <span style="color:#666;font-size:0.8em;">(4)</span></button>' +
+                '<button onclick="closeBadFramingMenu()" style="padding:8px;background:#333;color:#888;border:1px solid #444;border-radius:8px;cursor:pointer;font-size:0.8em;">Annuler (Echap)</button>' +
+                '</div>';
+            const overlay = document.createElement('div');
+            overlay.id = 'badFramingOverlay';
+            overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99;';
+            overlay.onclick = closeBadFramingMenu;
+            document.body.appendChild(overlay);
+            overlay.insertAdjacentHTML('afterend', html);
+        }
+        function rateBadFraming(subtype) {
+            const clip = CLIPS[currentIndex];
+            feedback[clip.filename] = 'bad_framing';
+            // Stocke la sous-categorie dans un objet separe
+            if (!window.badFramingDetails) window.badFramingDetails = {};
+            window.badFramingDetails[clip.filename] = subtype;
+            closeBadFramingMenu();
+            updateCurrentFeedback(clip.filename);
+            highlightFeedbackBtn('bad_framing');
+            updateMinimap();
+            updateStats();
+            saveProgress();
+            setTimeout(() => {
+                if (currentIndex < TOTAL - 1) navigate(1); else showDone();
+            }, 400);
+        }
+        function closeBadFramingMenu() {
+            pendingBadFraming = false;
+            const menu = document.getElementById('badFramingMenu');
+            const overlay = document.getElementById('badFramingOverlay');
+            if (menu) menu.remove();
+            if (overlay) overlay.remove();
+        }
+
+        // === Sprint 34 : VEILLE RECAP SCREEN ===
+        function showVeilleRecap() {
+            const ctx = MANIFEST.context_summary;
+            if (!ctx || !ctx.active_topics || ctx.active_topics.length === 0) return false;
+            // Une seule fois par date
+            try {
+                if (localStorage.getItem('veille_recap_seen_' + (MANIFEST.date || ''))) return false;
+            } catch(e) {}
+
+            const typeEmoji = {competition: '🏆', rumeur: '💬', resultat: '📊', news: '📰', manual: '📌', audience: '👀'};
+            const sourceLabel = {youtube: '📺 YouTube', twitter: '🐦 Twitter', google_news: '📰 Google News', twitter_bookmark: '🔖 Bookmarks'};
+
+            // Groupe par source
+            const bySource = {};
+            for (const t of ctx.active_topics) {
+                const src = t.source || 'autre';
+                if (!bySource[src]) bySource[src] = [];
+                bySource[src].push(t);
+            }
+
+            let html = '';
+            for (const [src, topics] of Object.entries(bySource)) {
+                const label = sourceLabel[src] || src;
+                html += `<div style="margin-bottom:16px;">`;
+                html += `<div style="color:#9b59b6;font-weight:700;margin-bottom:6px;">${label}</div>`;
+                for (const t of topics) {
+                    const emoji = typeEmoji[t.type] || '📌';
+                    html += `<div style="padding:3px 0 3px 12px;border-left:2px solid #2a2a4a;">${emoji} ${escHtml(t.text)}</div>`;
+                }
+                html += `</div>`;
+            }
+            if (ctx.boosted_clips_count > 0) {
+                html += `<div style="margin-top:8px;color:#7c7;">✓ ${ctx.boosted_clips_count} clip${ctx.boosted_clips_count > 1 ? 's' : ''} boosté${ctx.boosted_clips_count > 1 ? 's' : ''} par ces topics</div>`;
+            }
+
+            document.getElementById('veilleContent').innerHTML = html;
+            document.getElementById('videoWrapper').style.display = 'none';
+            document.getElementById('bottomPanel').style.display = 'none';
+            document.getElementById('veilleScreen').style.display = 'flex';
+            return true;
+        }
+
+        function dismissVeille() {
+            try { localStorage.setItem('veille_recap_seen_' + (MANIFEST.date || ''), '1'); } catch(e) {}
+            document.getElementById('veilleScreen').style.display = 'none';
+            document.getElementById('videoWrapper').style.display = 'flex';
+            document.getElementById('bottomPanel').style.display = 'flex';
+            loadClip(currentIndex);
+        }
+
+        // === Sprint 32 : CONTEXT SUMMARY — Sprint 35 : fermable + max 5 topics ===
+        function renderContextSummary() {
+            const el = document.getElementById('contextSummary');
+            const ctx = MANIFEST.context_summary;
+            if (!ctx || !ctx.active_topics || ctx.active_topics.length === 0) return;
+
+            // S-04 : ne pas reafficher si Silixio l'a ferme pour cette date
+            try {
+                if (localStorage.getItem('ctx_summary_dismissed_' + (MANIFEST.date || ''))) return;
+            } catch(e) {}
+
+            const typeEmoji = {competition: '\u{1F3C6}', rumeur: '\u{1F4AC}', resultat: '\u{1F4CA}', news: '\u{1F4F0}', manual: '\u{1F4CC}', audience: '\u{1F440}'};
+            // S-04 : limiter a 5 topics max pour eviter que le bandeau occupe tout l'ecran
+            const topTopics = ctx.active_topics.slice(0, 5);
+            const remaining = ctx.active_topics.length - topTopics.length;
+            const parts = topTopics.map(t => {
+                const emoji = typeEmoji[t.type] || '\u{1F4CC}';
+                return `${emoji} <strong>${t.text}</strong> <span style="color:#666">(\u00D7${t.boost})</span>`;
+            });
+
+            let html = parts.join(' &middot; ');
+            if (remaining > 0) html += ` <span style="color:#666">&middot; +${remaining} autres</span>`;
+            if (ctx.boosted_clips_count > 0) {
+                html += ` &mdash; <span style="color:#7c7">${ctx.boosted_clips_count} clip${ctx.boosted_clips_count > 1 ? 's' : ''} boost\u00E9${ctx.boosted_clips_count > 1 ? 's' : ''}</span>`;
+            }
+            document.getElementById('contextSummaryContent').innerHTML = html;
+            el.style.display = 'flex';
+        }
+
+        // === MINIMAP ===
+        function buildMinimap() {
+            const mm = document.getElementById('minimap');
+            mm.innerHTML = '';
+            for (let i = 0; i < TOTAL; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.title = 'Clip ' + (i + 1) + ' — ' + (CLIPS[i].streamer || '') + ' ' + (CLIPS[i].timestamp || '');
+                dot.onclick = () => loadClip(i);
+                mm.appendChild(dot);
+            }
+        }
+
+        function updateMinimap() {
+            const dots = document.querySelectorAll('.minimap .dot');
+            dots.forEach((dot, i) => {
+                dot.className = 'dot';
+                const fb = feedback[CLIPS[i].filename];
+                if (fb) dot.classList.add('fb-' + fb);
+                if (i === currentIndex) dot.classList.add('current');
+            });
+        }
+
+        // === DONE ===
+        function showDone() {
+            document.getElementById('videoWrapper').style.display = 'none';
+            const done = document.getElementById('doneScreen');
+            done.classList.add('show');
+
+            const vals = Object.values(feedback);
+            const count = v => vals.filter(x => x === v).length;
+            const rest = TOTAL - vals.length;
+
+            // Sprint 32 : stats de session enrichies
+            const good_total = count('top') + count('good');
+            const bad_total = count('not_interesting') + count('not_relevant');
+            const precision = vals.length > 0 ? Math.round(good_total / vals.length * 100) : 0;
+
+            // Stats par source : % de "bon" pour chaque source
+            let sourceStats = '';
+            const sourceMap = {};
+            ALL_CLIPS.forEach(clip => {
+                const fb = feedback[clip.filename];
+                if (!fb) return;
+                const isGood = (fb === 'top' || fb === 'good');
+                (clip.sources || []).forEach(src => {
+                    if (!sourceMap[src]) sourceMap[src] = {good: 0, total: 0};
+                    sourceMap[src].total++;
+                    if (isGood) sourceMap[src].good++;
+                });
+            });
+            const sortedSources = Object.entries(sourceMap)
+                .map(([src, s]) => ({src, pct: Math.round(s.good / s.total * 100), total: s.total}))
+                .filter(s => s.total >= 3)
+                .sort((a, b) => b.pct - a.pct);
+            if (sortedSources.length > 0) {
+                sourceStats = '<br><span style="font-size:0.85em;color:#888;">Sources : ' +
+                    sortedSources.map(s => {
+                        const color = s.pct >= 60 ? '#2ecc71' : s.pct >= 40 ? '#f1c40f' : '#e74c3c';
+                        return '<span style="color:' + color + ';">' + s.src + ' ' + s.pct + '%</span>';
+                    }).join(' \u00b7 ') + '</span>';
+            }
+
+            document.getElementById('doneStats').innerHTML =
+                '<span style="font-size:1.3em;color:' + (precision >= 60 ? '#2ecc71' : '#f1c40f') + ';">' +
+                    good_total + '/' + vals.length + ' bons (' + precision + '% de pr\u00e9cision)' +
+                '</span><br>' +
+                '&#128293; Top : ' + count('top') + ' &nbsp;|&nbsp; ' +
+                '&#9989; Bons : ' + count('good') + '<br>' +
+                '&#128564; Moments faibles : ' + count('not_interesting') + ' &nbsp;|&nbsp; ' +
+                '&#10060; Pas pertinents : ' + count('not_relevant') + ' &nbsp;|&nbsp; ' +
+                '&#9986; Mal cadres : ' + count('bad_framing') + ' &nbsp;|&nbsp; ' +
+                '&#128257; Doublons : ' + count('duplicate') +
+                sourceStats +
+                (rest > 0 ? '<br><span style="color:#888;font-size:0.9em">' + rest + ' clips non evalues</span>' : '');
+        }
+
+        // === EXPORT ===
+        function buildFeedbackData() {
+            const data = {
+                vod_date: MANIFEST.date || '',
+                run_id: MANIFEST.run_id || '',
+                is_benchmark: true,
+                exported_at: new Date().toISOString(),
+                total_clips: TOTAL,
+                feedback: {},
+                chat_requests: {},
+                downloads: {},
+                summary: {
+                    top: 0, good: 0, not_interesting: 0, bad_framing: 0,
+                    duplicate: 0, not_rated: 0,
+                },
+            };
+            CLIPS.forEach(clip => {
+                const fb = feedback[clip.filename] || null;
+                // Stocker le verdict + ai_category pour l'auto-tune
+                let displayedLabel = fb ? (VERDICT_LABELS[fb] || fb) : null;
+                data.feedback[clip.filename] = {
+                    verdict: fb,
+                    displayed_label: displayedLabel ? displayedLabel.replace(/&#\d+;|\u[0-9a-f]{4}/gi, '').trim() : null,
+                    bad_framing_detail: (window.badFramingDetails || {})[clip.filename] || null,
+                    score: clip.score || null,
+                    sources: clip.sources || [],
+                    ai_category: clip.ai_category || null,
+                    ai_summary: clip.ai_summary || null,
+                    lane: clip.lane || null,
+                    ai_verdict: clip.ai_verdict || null,
+                    timestamp: clip.timestamp || null,
+                    streamer: clip.streamer || null,
+                };
+                if (fb) data.summary[fb] = (data.summary[fb] || 0) + 1;
+                else data.summary.not_rated++;
+                if (chatFlags[clip.filename]) data.chat_requests[clip.filename] = true;
+                if (downloads[clip.filename]) data.downloads[clip.filename] = true;
+            });
+            return data;
+        }
+
+        function exportFeedback() {
+            const data = buildFeedbackData();
+            const json = JSON.stringify(data, null, 2);
+            const runId = MANIFEST.run_id || MANIFEST.date || 'clips';
+            const now = new Date();
+            const ts = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + '_' + String(now.getHours()).padStart(2,'0') + 'h' + String(now.getMinutes()).padStart(2,'0');
+            const filename = 'benchmark_feedback_' + runId + '_' + ts + '.json';
+
+            // Telechargement local
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            // Upload automatique vers Drive via Google Apps Script (si configure)
+            if (APPS_SCRIPT_URL) {
+                uploadFeedbackToDrive(data, filename);
+            }
+        }
+
+        async function uploadFeedbackToDrive(data, filename) {
+            const statusEl = document.getElementById('driveUploadStatus');
+            if (statusEl) { statusEl.textContent = 'Upload Drive...'; statusEl.style.color = '#f39c12'; }
+            try {
+                const resp = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ filename, content: JSON.stringify(data, null, 2) }),
+                });
+                if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                const result = await resp.json().catch(() => ({}));
+                if (statusEl) { statusEl.textContent = 'Drive OK'; statusEl.style.color = '#2ecc71'; }
+                console.log('Feedback uploade sur Drive :', result);
+            } catch (e) {
+                if (statusEl) { statusEl.textContent = 'Erreur Drive : ' + e.message; statusEl.style.color = '#e74c3c'; }
+                console.error('Echec upload Drive :', e);
+            }
+        }
+
+        // === HELPERS ===
+        function escHtml(s) {
+            const div = document.createElement('div');
+            div.textContent = s;
+            return div.innerHTML;
+        }
+
+        function extractFileId(url) {
+            if (!url) return null;
+            // Format : /file/d/FILE_ID/
+            let match = url.match(/\/file\/d\/([^/?&]+)/);
+            if (match) return match[1];
+            // Format : ?id=FILE_ID ou &id=FILE_ID
+            match = url.match(/[?&]id=([^&]+)/);
+            return match ? match[1] : null;
+        }
+
+        // Sprint 34 : extrait le slug d'un clip Twitch pour l'embed player
+        function extractTwitchClipSlug(url) {
+            if (!url) return null;
+            // Format : https://www.twitch.tv/streamer/clip/SlugName-xxxx
+            const match = url.match(/\/clip\/([^/?&]+)/);
+            return match ? match[1] : null;
+        }
+
+        // === S-02 : SYNC CHAT / PLAYER PRINCIPAL ===
+        // Attache les listeners play/pause/seeked sur le player principal pour
+        // synchroniser la video chat (seulement si les deux sont des <video>).
+        let _chatSyncTarget = null;
+        function _attachChatSync(mainPlayer, chatVideo) {
+            _detachChatSync(mainPlayer); // eviter les doublons
+            if (!mainPlayer || mainPlayer.tagName !== 'VIDEO' || !chatVideo) return;
+            _chatSyncTarget = chatVideo;
+            mainPlayer.addEventListener('pause',  _onMainPause);
+            mainPlayer.addEventListener('play',   _onMainPlay);
+            mainPlayer.addEventListener('seeked', _onMainSeeked);
+        }
+        function _detachChatSync(mainPlayer) {
+            if (!mainPlayer) return;
+            mainPlayer.removeEventListener('pause',  _onMainPause);
+            mainPlayer.removeEventListener('play',   _onMainPlay);
+            mainPlayer.removeEventListener('seeked', _onMainSeeked);
+            _chatSyncTarget = null;
+        }
+        function _onMainPause()  { if (_chatSyncTarget) _chatSyncTarget.pause(); }
+        function _onMainPlay()   { if (_chatSyncTarget) _chatSyncTarget.play().catch(()=>{}); }
+        function _onMainSeeked() {
+            const main = document.getElementById('player');
+            if (_chatSyncTarget && main && main.tagName === 'VIDEO') {
+                _chatSyncTarget.currentTime = main.currentTime;
+            }
+        }
+
+        // === S-01 : DOWNLOAD DOSSIER FINAL (selection top + bons) ===
+        // Fix: les URLs Drive bloquent fetch() (CORS) — on génère un fichier .txt
+        // avec toutes les URLs pour téléchargement groupé via outil externe (wget/aria2).
+        function downloadFolder() {
+            const selection = CLIPS.filter(c => {
+                const fb = feedback[c.filename];
+                return fb === 'top' || fb === 'good';
+            });
+            const targets = selection.length > 0 ? selection : CLIPS;
+            const label = selection.length > 0
+                ? `${selection.length} clips Top/Bons`
+                : `tous les ${targets.length} clips`;
+            const downloadable = targets.filter(c => c.drive_url);
+
+            if (downloadable.length === 0) {
+                alert('Aucun clip disponible au telechargement (drive_url manquant).');
+                return;
+            }
+
+            // Génère un fichier .txt : une ligne par clip (nom\tURL)
+            // Utilisable avec wget -i ou aria2c pour téléchargement groupé
+            const lines = downloadable.map(c =>
+                `${c.filename || 'clip.mp4'}\t${c.drive_url}`
+            ).join('\n');
+            const blob = new Blob([lines], { type: 'text/plain;charset=utf-8' });
+            const objUrl = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = objUrl;
+            a.download = 'clips_selection.txt';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => URL.revokeObjectURL(objUrl), 1000);
+
+            // Marque tous les clips comme téléchargés
+            downloadable.forEach(c => { downloads[c.filename] = true; });
+
+            const btn = document.getElementById('dlFolderBtn');
+            if (btn) {
+                btn.textContent = `\u2705 ${downloadable.length} URLs export\u00e9es`;
+                setTimeout(() => { btn.innerHTML = '&#128230; S&eacute;lection <span class="shortcut"></span>'; }, 3000);
+            }
+        }
+
+        // === S-04 : CONTEXT SUMMARY — fermeture persistante ===
+        function dismissContextSummary() {
+            document.getElementById('contextSummary').style.display = 'none';
+            try { localStorage.setItem('ctx_summary_dismissed_' + (MANIFEST.date || ''), '1'); } catch(e) {}
+        }
+
+        // === KEYBOARD — S-03 : raccourcis remappes a/z/e/r/s/t ===
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            if (!CLIPS.length) return;
+
+            // Fix focus : si la vidéo a le focus (après clic sur player), on le retire
+            // pour que les raccourcis a/z/e/r/s/t reprennent sans recliquer ailleurs
+            if (document.activeElement && document.activeElement.tagName === 'VIDEO') {
+                document.activeElement.blur();
+            }
+
+            // Sprint 34 : Espace ou → pour dismisser l'ecran veille
+            if (document.getElementById('veilleScreen').style.display !== 'none') {
+                if (e.key === ' ' || e.key === 'ArrowRight') { e.preventDefault(); dismissVeille(); }
+                return;
+            }
+
+            // Sous-menu mal cadre : utilise 1/2/3/4 pour eviter le conflit avec a/z/e/r
+            if (pendingBadFraming) {
+                switch(e.key) {
+                    case '1': rateBadFraming('too_early'); break;
+                    case '2': rateBadFraming('too_late'); break;
+                    case '3': rateBadFraming('too_short'); break;
+                    case '4': rateBadFraming('too_long'); break;
+                    case 'Escape': closeBadFramingMenu(); break;
+                }
+                return;
+            }
+
+            switch(e.key) {
+                case 'a': case 'A': rate('top'); break;
+                case 'z': case 'Z': rate('good'); break;
+                case 'e': case 'E': rate('not_interesting'); break;
+                case 'r': case 'R': showBadFramingSubmenu(); break;
+                case 's': case 'S': rate('not_relevant'); break;
+                case 't': case 'T': rate('duplicate'); break;
+                case 'c': case 'C': toggleChat(); break;
+                case 'd': case 'D': downloadClip(); break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    if (e.shiftKey) {
+                        const pFwd = document.getElementById('player');
+                        if (pFwd && pFwd.tagName === 'VIDEO') pFwd.currentTime += 5;
+                    } else {
+                        navigate(1);
+                    }
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    if (e.shiftKey) {
+                        const pBwd = document.getElementById('player');
+                        if (pBwd && pBwd.tagName === 'VIDEO') pBwd.currentTime = Math.max(0, pBwd.currentTime - 5);
+                    } else {
+                        navigate(-1);
+                    }
+                    break;
+                case ' ':
+                    e.preventDefault();
+                    const p = document.getElementById('player');
+                    if (p && p.tagName === 'VIDEO') {
+                        if (p.paused) p.play();
+                        else p.pause();
+                    }
+                    break;
+            }
+        });
+
+        // Fix focus vidéo : remet le focus sur document.body après clic sur le player
+        // pour que les raccourcis clavier reprennent immédiatement sans clic supplémentaire
+        document.getElementById('player').addEventListener('click', () => {
+            setTimeout(() => { document.body.focus(); }, 50);
+        });
+        // Délègue aussi le blur lors de la mise en pause/play via la barre de contrôles native
+        document.getElementById('player').addEventListener('pause', () => {
+            setTimeout(() => { if (document.activeElement && document.activeElement.tagName === 'VIDEO') document.activeElement.blur(); }, 50);
+        });
+        document.getElementById('player').addEventListener('play', () => {
+            setTimeout(() => { if (document.activeElement && document.activeElement.tagName === 'VIDEO') document.activeElement.blur(); }, 50);
+        });
+    </script>
+</body>
+</html>
