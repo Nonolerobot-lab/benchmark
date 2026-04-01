@@ -1,12 +1,12 @@
 {
   "date": "2026-04-01",
   "run_id": "2026-04-01_18h34",
-  "generated_at": "2026-04-01T21:55:13",
-  "total_clips": 71,
+  "generated_at": "2026-04-01T22:09:08",
+  "total_clips": 50,
   "streamers": [
+    "jolavanille",
     "nikof",
-    "wazz",
-    "jolavanille"
+    "wazz"
   ],
   "is_benchmark": true,
   "use_iframe": true,
@@ -29,12 +29,12 @@
       "lane": "explore",
       "ai_verdict": "optional",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1h6ImKavUfyPu8fg9rSNNAgkL99Mq3ccT",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1h6ImKavUfyPu8fg9rSNNAgkL99Mq3ccT&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1h6ImKavUfyPu8fg9rSNNAgkL99Mq3ccT/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 56.0
     },
     {
       "filename": "clip_001_00-38-32_score83_1hl_ai+audio.mp4",
@@ -53,12 +53,12 @@
       "lane": "core",
       "ai_verdict": "core",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1eQF4m-Rd_K-JFhlLCpr5iczrC__aYJev",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1eQF4m-Rd_K-JFhlLCpr5iczrC__aYJev&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1eQF4m-Rd_K-JFhlLCpr5iczrC__aYJev/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 59.3
     },
     {
       "filename": "clip_002_00-41-23_score76_1hl_ai+context.mp4",
@@ -77,12 +77,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1L66ECefG_hnmoJGgQhSPXJRRyNdz6H74",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1L66ECefG_hnmoJGgQhSPXJRRyNdz6H74&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1L66ECefG_hnmoJGgQhSPXJRRyNdz6H74/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 56.7
     },
     {
       "filename": "clip_002_00-12-44_score73_1hl_ai+audio.mp4",
@@ -101,12 +101,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1H3Aj7S4LdcWUokdPOK6qJ2vy3R4_y97Z",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1H3Aj7S4LdcWUokdPOK6qJ2vy3R4_y97Z&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1H3Aj7S4LdcWUokdPOK6qJ2vy3R4_y97Z/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.1
     },
     {
       "filename": "clip_001_00-28-29_score73_1hl_ai+audio.mp4",
@@ -124,12 +124,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1iUNuaUOCXk9LyerpTTFPnijXDf0O-5Ev",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1iUNuaUOCXk9LyerpTTFPnijXDf0O-5Ev&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1iUNuaUOCXk9LyerpTTFPnijXDf0O-5Ev/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 44.8
     },
     {
       "filename": "clip_003_03-21-03_score70_1hl_ai+audio.mp4",
@@ -147,12 +147,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=11J-FipCc0mFMxr9y5FHSqSBg7OwMdZuO",
+      "drive_url": "https://drive.usercontent.google.com/download?id=11J-FipCc0mFMxr9y5FHSqSBg7OwMdZuO&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/11J-FipCc0mFMxr9y5FHSqSBg7OwMdZuO/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 63.0
     },
     {
       "filename": "clip_003_01-09-10_score70_1hl_ai+audio.mp4",
@@ -171,12 +171,12 @@
       "lane": "core",
       "ai_verdict": "core",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1rm_oX3yQQeMLmLfm0WUo4LaV0M0kXZ9S",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1rm_oX3yQQeMLmLfm0WUo4LaV0M0kXZ9S&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1rm_oX3yQQeMLmLfm0WUo4LaV0M0kXZ9S/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.1
     },
     {
       "filename": "clip_004_03-29-42_score69_1hl_ai+audio.mp4",
@@ -194,12 +194,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1J3zU6AAhBjNCzx0KtdSqDggNEvFo8SPC",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1J3zU6AAhBjNCzx0KtdSqDggNEvFo8SPC&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1J3zU6AAhBjNCzx0KtdSqDggNEvFo8SPC/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 58.8
     },
     {
       "filename": "clip_004_02-02-21_score69_1hl_ai+audio.mp4",
@@ -217,12 +217,12 @@
       "lane": "core",
       "ai_verdict": "core",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1m_CJmexHC7xOTp70sPk2cw2lKH_uhUme",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1m_CJmexHC7xOTp70sPk2cw2lKH_uhUme&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1m_CJmexHC7xOTp70sPk2cw2lKH_uhUme/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.7
     },
     {
       "filename": "clip_005_01-01-37_score68_1hl_ai+audio.mp4",
@@ -241,12 +241,12 @@
       "lane": "core",
       "ai_verdict": "core",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1JjpDWPFAGR0fwX-LnMH_b7-fkSpaExet",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1JjpDWPFAGR0fwX-LnMH_b7-fkSpaExet&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1JjpDWPFAGR0fwX-LnMH_b7-fkSpaExet/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 56.1
     },
     {
       "filename": "clip_005_01-45-25_score66_1hl_ai+audio.mp4",
@@ -264,12 +264,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=174lgqea_F02mIa4iUgJIuMgem2k3pgLJ",
+      "drive_url": "https://drive.usercontent.google.com/download?id=174lgqea_F02mIa4iUgJIuMgem2k3pgLJ&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/174lgqea_F02mIa4iUgJIuMgem2k3pgLJ/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 59.3
     },
     {
       "filename": "clip_002_00-31-47_score66_1hl_ai+audio.mp4",
@@ -288,12 +288,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1Yn22LB919AnO_lm1IcB9NbAB_gaQqQem",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1Yn22LB919AnO_lm1IcB9NbAB_gaQqQem&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1Yn22LB919AnO_lm1IcB9NbAB_gaQqQem/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 43.9
     },
     {
       "filename": "clip_006_02-32-06_score64_1hl_ai+audio.mp4",
@@ -311,12 +311,12 @@
       "lane": "core",
       "ai_verdict": "core",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1NxPmkwVOqvC-waZpcGkfrzt04upEKhNi",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1NxPmkwVOqvC-waZpcGkfrzt04upEKhNi&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1NxPmkwVOqvC-waZpcGkfrzt04upEKhNi/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.0
     },
     {
       "filename": "clip_007_03-21-30_score64_1hl_ai+audio.mp4",
@@ -334,12 +334,12 @@
       "lane": "explore",
       "ai_verdict": "optional",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1Tt1WOspC518190pv3vE-4OPkb_aaHx3G",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1Tt1WOspC518190pv3vE-4OPkb_aaHx3G&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1Tt1WOspC518190pv3vE-4OPkb_aaHx3G/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.2
     },
     {
       "filename": "clip_008_00-06-45_score63_1hl_ai+audio.mp4",
@@ -359,12 +359,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1PwZQfdbreBTKrg7VI8KiSlk1EjWDtW1e",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1PwZQfdbreBTKrg7VI8KiSlk1EjWDtW1e&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1PwZQfdbreBTKrg7VI8KiSlk1EjWDtW1e/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.9
     },
     {
       "filename": "clip_009_00-48-54_score63_1hl_ai+audio.mp4",
@@ -382,12 +382,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1rGKNEQZhMHMUVFddIz3EJrfMeFMeLvDP",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1rGKNEQZhMHMUVFddIz3EJrfMeFMeLvDP&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1rGKNEQZhMHMUVFddIz3EJrfMeFMeLvDP/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.2
     },
     {
       "filename": "clip_006_00-30-09_score63_1hl_ai+audio.mp4",
@@ -405,12 +405,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1qby3sknAspxWSmmD8nsjR97-gMKJvTe7",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1qby3sknAspxWSmmD8nsjR97-gMKJvTe7&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1qby3sknAspxWSmmD8nsjR97-gMKJvTe7/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 58.5
     },
     {
       "filename": "clip_007_02-19-33_score61_1hl_ai+audio.mp4",
@@ -428,12 +428,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1zVQXT1AUOjNKg7rL7Lcx3V3NwREzUdA9",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1zVQXT1AUOjNKg7rL7Lcx3V3NwREzUdA9&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1zVQXT1AUOjNKg7rL7Lcx3V3NwREzUdA9/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 57.1
     },
     {
       "filename": "clip_010_00-44-12_score60_1hl_ai+audio.mp4",
@@ -451,12 +451,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1THw9mjDunejtLA5PJwKT846IU0F4fWRD",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1THw9mjDunejtLA5PJwKT846IU0F4fWRD&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1THw9mjDunejtLA5PJwKT846IU0F4fWRD/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.0
     },
     {
       "filename": "clip_008_02-00-18_score59_1hl_ai+audio.mp4",
@@ -474,12 +474,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1Y-zg4lDZPFhg2VL-VJ3n2KllnPkKaMtC",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1Y-zg4lDZPFhg2VL-VJ3n2KllnPkKaMtC&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1Y-zg4lDZPFhg2VL-VJ3n2KllnPkKaMtC/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 59.7
     },
     {
       "filename": "clip_009_03-16-53_score59_1hl_ai+audio.mp4",
@@ -497,12 +497,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1mlooJA9urtNAmsHYuI3SDmxhrZrGvgDA",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1mlooJA9urtNAmsHYuI3SDmxhrZrGvgDA&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1mlooJA9urtNAmsHYuI3SDmxhrZrGvgDA/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 59.2
     },
     {
       "filename": "clip_010_03-25-03_score59_1hl_ai+audio.mp4",
@@ -520,12 +520,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1HxQD6ajO4UdrddCc2F_zRiHuQ1V_V7uv",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1HxQD6ajO4UdrddCc2F_zRiHuQ1V_V7uv&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1HxQD6ajO4UdrddCc2F_zRiHuQ1V_V7uv/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 60.2
     },
     {
       "filename": "clip_011_01-33-00_score58_1hl_ai+audio.mp4",
@@ -543,12 +543,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1Uvj5J2i1D0DU22jhml0Pksr0AV43aPqT",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1Uvj5J2i1D0DU22jhml0Pksr0AV43aPqT&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1Uvj5J2i1D0DU22jhml0Pksr0AV43aPqT/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.2
     },
     {
       "filename": "clip_011_01-24-58_score58_1hl_ai+audio.mp4",
@@ -566,12 +566,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=17ZAIQzx8KmsL8CqNOBpPLwmahvgXM8CS",
+      "drive_url": "https://drive.usercontent.google.com/download?id=17ZAIQzx8KmsL8CqNOBpPLwmahvgXM8CS&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/17ZAIQzx8KmsL8CqNOBpPLwmahvgXM8CS/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 49.9
     },
     {
       "filename": "clip_012_02-15-25_score57_1hl_ai+audio.mp4",
@@ -589,12 +589,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1rGpOSYGj-JE8xY2IFGHV5xspytYMKmyy",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1rGpOSYGj-JE8xY2IFGHV5xspytYMKmyy&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1rGpOSYGj-JE8xY2IFGHV5xspytYMKmyy/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 58.5
     },
     {
       "filename": "clip_012_02-57-37_score57_1hl_ai+audio.mp4",
@@ -613,12 +613,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1fX0vSzbAHQ9aypGYxl5tgdpdkSHT6bCz",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1fX0vSzbAHQ9aypGYxl5tgdpdkSHT6bCz&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1fX0vSzbAHQ9aypGYxl5tgdpdkSHT6bCz/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.9
     },
     {
       "filename": "clip_013_02-27-54_score56_1hl_ai+audio.mp4",
@@ -636,12 +636,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1FE3GMcnQ_UYmMKzKWX2aL8IRDmgMzMA1",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1FE3GMcnQ_UYmMKzKWX2aL8IRDmgMzMA1&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1FE3GMcnQ_UYmMKzKWX2aL8IRDmgMzMA1/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 46.5
     },
     {
       "filename": "clip_003_01-04-12_score56_1hl_ai+audio.mp4",
@@ -659,12 +659,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1KVMZ7ya6h9_6XPccQUHlFAL7QvouIkZc",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1KVMZ7ya6h9_6XPccQUHlFAL7QvouIkZc&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1KVMZ7ya6h9_6XPccQUHlFAL7QvouIkZc/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 43.2
     },
     {
       "filename": "clip_014_02-04-10_score56_1hl_ai+audio.mp4",
@@ -682,12 +682,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1s2atsNHB4Khm70s0zh0F1MRMtSzXi0_g",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1s2atsNHB4Khm70s0zh0F1MRMtSzXi0_g&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1s2atsNHB4Khm70s0zh0F1MRMtSzXi0_g/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 61.9
     },
     {
       "filename": "clip_015_00-47-05_score55_1hl_ai+audio.mp4",
@@ -705,12 +705,12 @@
       "lane": "core",
       "ai_verdict": "core",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1gbV8j_4IYbCeLGUWeCj7cxW8_Ky7iZwF",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1gbV8j_4IYbCeLGUWeCj7cxW8_Ky7iZwF&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1gbV8j_4IYbCeLGUWeCj7cxW8_Ky7iZwF/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 62.7
     },
     {
       "filename": "clip_013_02-44-21_score55_1hl_ai+audio.mp4",
@@ -728,12 +728,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1owkWoyN6KcaLTSQqN90c3BxgnnzPiAk2",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1owkWoyN6KcaLTSQqN90c3BxgnnzPiAk2&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1owkWoyN6KcaLTSQqN90c3BxgnnzPiAk2/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.9
     },
     {
       "filename": "clip_014_00-33-13_score54_1hl_ai+audio.mp4",
@@ -751,12 +751,12 @@
       "lane": "explore",
       "ai_verdict": "optional",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1LD4VDU-7szexfQHNPItHuAaMvOIC-vyM",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1LD4VDU-7szexfQHNPItHuAaMvOIC-vyM&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1LD4VDU-7szexfQHNPItHuAaMvOIC-vyM/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.9
     },
     {
       "filename": "clip_015_01-35-43_score54_1hl_ai+audio.mp4",
@@ -774,12 +774,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=14YZYxxJzm8qmE17TnmeihEJE8Lb1w_3A",
+      "drive_url": "https://drive.usercontent.google.com/download?id=14YZYxxJzm8qmE17TnmeihEJE8Lb1w_3A&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/14YZYxxJzm8qmE17TnmeihEJE8Lb1w_3A/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.8
     },
     {
       "filename": "clip_016_01-12-17_score54_1hl_ai+audio.mp4",
@@ -797,12 +797,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1UgQhw7suWwyhNqFwa-nBC1y2Gb9QXeR_",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1UgQhw7suWwyhNqFwa-nBC1y2Gb9QXeR_&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1UgQhw7suWwyhNqFwa-nBC1y2Gb9QXeR_/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 51.3
     },
     {
       "filename": "clip_016_02-08-31_score54_1hl_ai+audio.mp4",
@@ -820,12 +820,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1_nrOQ6WposXrhgDCsVLLWqP_8L7giDjH",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1_nrOQ6WposXrhgDCsVLLWqP_8L7giDjH&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1_nrOQ6WposXrhgDCsVLLWqP_8L7giDjH/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.9
     },
     {
       "filename": "clip_017_02-23-32_score52_1hl_ai+audio.mp4",
@@ -843,12 +843,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1S5HUF8kQ0Rsh0cAGT1jFJtpWpbt5bRKF",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1S5HUF8kQ0Rsh0cAGT1jFJtpWpbt5bRKF&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1S5HUF8kQ0Rsh0cAGT1jFJtpWpbt5bRKF/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 58.7
     },
     {
       "filename": "clip_018_01-20-36_score52_1hl_ai+audio.mp4",
@@ -866,12 +866,12 @@
       "lane": "explore",
       "ai_verdict": "optional",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1o0mAoffvfy5vUZQN6-LSNlOxUK_eG6xS",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1o0mAoffvfy5vUZQN6-LSNlOxUK_eG6xS&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1o0mAoffvfy5vUZQN6-LSNlOxUK_eG6xS/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 63.5
     },
     {
       "filename": "clip_017_00-37-33_score52_1hl_ai+context.mp4",
@@ -889,12 +889,12 @@
       "lane": "core",
       "ai_verdict": "core",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1T1QbBp-QpX0uNdS3FCZ_U2luQ-2XWU6q",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1T1QbBp-QpX0uNdS3FCZ_U2luQ-2XWU6q&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1T1QbBp-QpX0uNdS3FCZ_U2luQ-2XWU6q/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.9
     },
     {
       "filename": "clip_019_01-14-18_score52_1hl_ai+audio.mp4",
@@ -913,12 +913,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=14hTjVavEPkKbT1O2JHQkckelX0WvE25W",
+      "drive_url": "https://drive.usercontent.google.com/download?id=14hTjVavEPkKbT1O2JHQkckelX0WvE25W&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/14hTjVavEPkKbT1O2JHQkckelX0WvE25W/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 59.1
     },
     {
       "filename": "clip_018_03-07-13_score51_1hl_ai+audio.mp4",
@@ -936,12 +936,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1G8q5qXbpbR6IPKutHMqxqQDVYbI5xKI6",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1G8q5qXbpbR6IPKutHMqxqQDVYbI5xKI6&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1G8q5qXbpbR6IPKutHMqxqQDVYbI5xKI6/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.9
     },
     {
       "filename": "clip_020_01-38-57_score50_1hl_ai+audio.mp4",
@@ -960,79 +960,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=14fQOWTSn22bMCzaGlUuejeAuA7nafiaB",
+      "drive_url": "https://drive.usercontent.google.com/download?id=14fQOWTSn22bMCzaGlUuejeAuA7nafiaB&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/14fQOWTSn22bMCzaGlUuejeAuA7nafiaB/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_021.mp4",
-      "streamer": "wazz",
-      "timestamp": "00:16:04",
-      "score": 50.2,
-      "sources": [
-        "audio",
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "funny_talk",
-      "ai_summary": "Blague sur les mitraillettes et confusion horaire",
-      "lane": "explore",
-      "ai_verdict": "drop",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_022.mp4",
-      "streamer": "wazz",
-      "timestamp": "00:51:27",
-      "score": 49.0,
-      "sources": [
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "hype_cast",
-      "ai_summary": "Pix 191 kills, réaction forte du caster",
-      "lane": "core",
-      "ai_verdict": "core",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_023.mp4",
-      "streamer": "wazz",
-      "timestamp": "03:27:20",
-      "score": 47.6,
-      "sources": [
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "drama_debate",
-      "ai_summary": "Débat mathématique banal sans réaction forte",
-      "lane": "explore",
-      "ai_verdict": "drop",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 58.3
     },
     {
       "filename": "clip_019_02-52-38_score47_1hl_ai+context.mp4",
@@ -1049,12 +982,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=173U_S46rD6s6W58WOeCTJTpuhn8KwMYb",
+      "drive_url": "https://drive.usercontent.google.com/download?id=173U_S46rD6s6W58WOeCTJTpuhn8KwMYb&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/173U_S46rD6s6W58WOeCTJTpuhn8KwMYb/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.0
     },
     {
       "filename": "clip_004_00-45-23_score44_1hl_audio+context.mp4",
@@ -1072,103 +1005,12 @@
       "lane": "explore",
       "ai_verdict": "",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1E3kugEpmahNsXhAP_X64CAJTrtGo73Xz",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1E3kugEpmahNsXhAP_X64CAJTrtGo73Xz&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1E3kugEpmahNsXhAP_X64CAJTrtGo73Xz/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_024.mp4",
-      "streamer": "wazz",
-      "timestamp": "01:35:39",
-      "score": 43.3,
-      "sources": [
-        "audio",
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "funny_talk",
-      "ai_summary": "Discussion banale sur les maths et le tirage au sort",
-      "lane": "explore",
-      "ai_verdict": "drop",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_025.mp4",
-      "streamer": "wazz",
-      "timestamp": "00:20:39",
-      "score": 42.9,
-      "sources": [
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "drama_debate",
-      "ai_summary": "Discussion banale sur un tirage au sort sans réaction forte",
-      "lane": "explore",
-      "ai_verdict": "drop",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_026.mp4",
-      "streamer": "wazz",
-      "timestamp": "01:04:40",
-      "score": 41.7,
-      "sources": [
-        "audio",
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "funny_talk",
-      "ai_summary": "Blague sur les mitraillettes sans réaction forte",
-      "lane": "explore",
-      "ai_verdict": "drop",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_027.mp4",
-      "streamer": "wazz",
-      "timestamp": "00:58:43",
-      "score": 41.4,
-      "sources": [
-        "audio",
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "funny_talk",
-      "ai_summary": "Blague sur les mitraillettes sans réaction forte",
-      "lane": "explore",
-      "ai_verdict": "drop",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 43.8
     },
     {
       "filename": "clip_005_00-12-22_score40_1hl_ai+context.mp4",
@@ -1185,35 +1027,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1R1sjtRcZLdP40jXvhFt5I9N3Gp6vrVBC",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1R1sjtRcZLdP40jXvhFt5I9N3Gp6vrVBC&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1R1sjtRcZLdP40jXvhFt5I9N3Gp6vrVBC/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_028.mp4",
-      "streamer": "wazz",
-      "timestamp": "00:13:06",
-      "score": 40.0,
-      "sources": [
-        "audio",
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "drama_debate",
-      "ai_summary": "Discussion mathématique banale sans réaction forte",
-      "lane": "explore",
-      "ai_verdict": "drop",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 44.5
     },
     {
       "filename": "clip_020_01-21-14_score40_1hl_audio+context.mp4",
@@ -1230,124 +1049,12 @@
       "lane": "explore",
       "ai_verdict": "",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1VUdItlKcr4CpSgF52mwWlak9czF-G317",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1VUdItlKcr4CpSgF52mwWlak9czF-G317&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1VUdItlKcr4CpSgF52mwWlak9czF-G317/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_029.mp4",
-      "streamer": "wazz",
-      "timestamp": "01:52:37",
-      "score": 39.6,
-      "sources": [
-        "audio",
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "drama_debate",
-      "ai_summary": "Discussion banale sur un licenciement sans hype",
-      "lane": "explore",
-      "ai_verdict": "drop",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_030.mp4",
-      "streamer": "wazz",
-      "timestamp": "00:26:46",
-      "score": 39.1,
-      "sources": [
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "drama_debate",
-      "ai_summary": "Débat mathématique banal sans réaction forte",
-      "lane": "explore",
-      "ai_verdict": "drop",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_031.mp4",
-      "streamer": "wazz",
-      "timestamp": "00:54:54",
-      "score": 39.1,
-      "sources": [
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "drama_debate",
-      "ai_summary": "Débat mathématique banal sans réaction forte",
-      "lane": "explore",
-      "ai_verdict": "drop",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_021.mp4",
-      "streamer": "nikof",
-      "timestamp": "00:53:12",
-      "score": 37.5,
-      "sources": [
-        "audio",
-        "whisper",
-        "twitch_clips",
-        "context"
-      ],
-      "ai_category": "",
-      "ai_summary": "",
-      "lane": "explore",
-      "ai_verdict": "",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_032.mp4",
-      "streamer": "wazz",
-      "timestamp": "00:33:18",
-      "score": 37.3,
-      "sources": [
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "funny_talk",
-      "ai_summary": "Blague de daron sur les mitraillettes sans réaction forte",
-      "lane": "explore",
-      "ai_verdict": "drop",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 55.1
     },
     {
       "filename": "clip_006_00-08-14_score36_1hl_ai+context.mp4",
@@ -1364,123 +1071,12 @@
       "lane": "explore",
       "ai_verdict": "drop",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1zy7PMUK7i4Fsh6kLKlB2p3IbofSuik5h",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1zy7PMUK7i4Fsh6kLKlB2p3IbofSuik5h&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1zy7PMUK7i4Fsh6kLKlB2p3IbofSuik5h/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_022.mp4",
-      "streamer": "nikof",
-      "timestamp": "02:26:11",
-      "score": 36.2,
-      "sources": [
-        "audio",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "",
-      "ai_summary": "",
-      "lane": "explore",
-      "ai_verdict": "",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_033.mp4",
-      "streamer": "wazz",
-      "timestamp": "01:56:12",
-      "score": 35.5,
-      "sources": [
-        "audio",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "",
-      "ai_summary": "",
-      "lane": "explore",
-      "ai_verdict": "",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_023.mp4",
-      "streamer": "nikof",
-      "timestamp": "03:17:24",
-      "score": 35.4,
-      "sources": [
-        "audio",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "",
-      "ai_summary": "",
-      "lane": "explore",
-      "ai_verdict": "",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_024.mp4",
-      "streamer": "nikof",
-      "timestamp": "01:52:10",
-      "score": 35.1,
-      "sources": [
-        "audio",
-        "whisper",
-        "twitch_clips",
-        "context"
-      ],
-      "ai_category": "",
-      "ai_summary": "",
-      "lane": "explore",
-      "ai_verdict": "",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_034.mp4",
-      "streamer": "wazz",
-      "timestamp": "00:44:06",
-      "score": 34.4,
-      "sources": [
-        "ai",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "funny_talk",
-      "ai_summary": "Blague sur les mitraillettes sans réaction forte",
-      "lane": "explore",
-      "ai_verdict": "drop",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 44.6
     },
     {
       "filename": "clip_007_01-08-32_score34_1hl_audio+context.mp4",
@@ -1497,34 +1093,12 @@
       "lane": "explore",
       "ai_verdict": "",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1n5_W5FhPWRgKGkiQxRHF_rI1lTgvvUPq",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1n5_W5FhPWRgKGkiQxRHF_rI1lTgvvUPq&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1n5_W5FhPWRgKGkiQxRHF_rI1lTgvvUPq/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_025.mp4",
-      "streamer": "nikof",
-      "timestamp": "03:26:37",
-      "score": 34.0,
-      "sources": [
-        "audio",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "",
-      "ai_summary": "",
-      "lane": "explore",
-      "ai_verdict": "",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 40.0
     },
     {
       "filename": "clip_008_00-20-12_score33_1hl_audio+context.mp4",
@@ -1541,12 +1115,12 @@
       "lane": "explore",
       "ai_verdict": "",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1fuTbwdu5y_zEPXbH1x7Z5oyDJmsLlFTN",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1fuTbwdu5y_zEPXbH1x7Z5oyDJmsLlFTN&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1fuTbwdu5y_zEPXbH1x7Z5oyDJmsLlFTN/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 43.9
     },
     {
       "filename": "clip_009_00-26-10_score33_1hl_audio+context.mp4",
@@ -1563,12 +1137,12 @@
       "lane": "explore",
       "ai_verdict": "",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1y0ih8xwpzHtdu-ozwDDtPblPlvnL8a09",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1y0ih8xwpzHtdu-ozwDDtPblPlvnL8a09&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1y0ih8xwpzHtdu-ozwDDtPblPlvnL8a09/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 44.4
     },
     {
       "filename": "clip_010_00-57-27_score32_1hl_audio+context.mp4",
@@ -1585,56 +1159,12 @@
       "lane": "explore",
       "ai_verdict": "",
       "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
+      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=1-VEBa7ew5PvR26IU1flXE1xrW_cOC_es",
+      "drive_url": "https://drive.usercontent.google.com/download?id=1-VEBa7ew5PvR26IU1flXE1xrW_cOC_es&export=download&confirm=t",
+      "drive_view_url": "https://drive.google.com/file/d/1-VEBa7ew5PvR26IU1flXE1xrW_cOC_es/view",
       "chat_clip_url": "",
       "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_026.mp4",
-      "streamer": "nikof",
-      "timestamp": "02:12:57",
-      "score": 31.9,
-      "sources": [
-        "audio",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "",
-      "ai_summary": "",
-      "lane": "explore",
-      "ai_verdict": "",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
-    },
-    {
-      "filename": "clip_027.mp4",
-      "streamer": "nikof",
-      "timestamp": "01:49:57",
-      "score": 31.7,
-      "sources": [
-        "audio",
-        "whisper",
-        "context"
-      ],
-      "ai_category": "",
-      "ai_summary": "",
-      "lane": "explore",
-      "ai_verdict": "",
-      "clip_url": "",
-      "video_url": "https://clips-proxy.contactdentoz.workers.dev/?id=",
-      "drive_url": "https://drive.usercontent.google.com/download?id=&export=download&confirm=t",
-      "drive_view_url": "https://drive.google.com/file/d//view",
-      "chat_clip_url": "",
-      "chat_video_url": "",
-      "size_mb": 0
+      "size_mb": 43.1
     }
   ]
 }
