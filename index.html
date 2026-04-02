@@ -747,16 +747,22 @@
 
             } else if (clip.video_url) {
                 // Mode 2 : Cloudflare proxy — video directe dans <video> tag
+                // Sprint 38 : optimisation latence — reutilise le <video>, preload, poster
                 if (playerEl.tagName !== 'VIDEO') {
                     const video = document.createElement('video');
                     video.id = 'player';
                     video.controls = true;
                     video.autoplay = true;
                     video.preload = 'auto';
+                    video.playsInline = true;
                     playerEl.replaceWith(video);
                 }
                 const player = document.getElementById('player');
                 player.style.display = '';
+                // Sprint 38 : poster thumbnail si dispo (evite l'ecran noir pendant le chargement)
+                if (clip.thumbnail_url) {
+                    player.poster = clip.thumbnail_url;
+                }
                 player.src = clip.video_url;
                 player.play().catch(() => {});
 
@@ -839,6 +845,10 @@
             infoHtml += '<span class="score" style="color:' + scoreColor + ';">' + Math.round(clip.score || 0) + '</span>';
             infoHtml += badge;
             if (clip.ai_category) infoHtml += '<span class="category">' + (categoryFR[clip.ai_category] || escHtml(clip.ai_category)) + '</span>';
+            // Sprint 39 : Victory Arc badge
+            if (clip.arc_id && clip.arc_label) {
+                infoHtml += '<span style="background:linear-gradient(135deg,#f9a825,#ff8f00);color:#000;padding:2px 8px;border-radius:10px;font-size:0.8em;margin-left:6px;font-weight:bold;">\ud83c\udfc6 ' + escHtml(clip.arc_label) + ' (' + clip.arc_position + ')</span>';
+            }
             if (clip.streamer) infoHtml += '<div style="color:#9b59b6;font-size:0.85em;margin-top:2px;">' + escHtml(clip.streamer) + '</div>';
             if (clip.ai_summary) infoHtml += '<div class="text">' + escHtml(clip.ai_summary) + '</div>';
             else if (clip.text) infoHtml += '<div class="text">"' + escHtml(clip.text.substring(0, 100)) + '"</div>';
@@ -874,6 +884,22 @@
 
             // Bug 1 : sauvegarder la position
             saveProgress();
+
+            // Sprint 38 : preload du clip suivant pour reduire la latence de navigation
+            if (idx + 1 < TOTAL) {
+                const nextClip = CLIPS[idx + 1];
+                if (nextClip.video_url && !document.getElementById('_preload_next')) {
+                    const preload = document.createElement('link');
+                    preload.id = '_preload_next';
+                    preload.rel = 'preload';
+                    preload.as = 'video';
+                    preload.href = nextClip.video_url;
+                    // Remplace le precedent preload
+                    const old = document.getElementById('_preload_next');
+                    if (old) old.remove();
+                    document.head.appendChild(preload);
+                }
+            }
         }
 
         function rate(value) {
